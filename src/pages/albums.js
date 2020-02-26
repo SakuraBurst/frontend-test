@@ -31,7 +31,7 @@ export default function AlbumsPage() {
         <Spinner animation="border" />
       ) : (
         <div>
-          <Button onClick={filterAlbums}>filter</Button>
+          <Button onClick={filterAlbums}>filterByName</Button>
           {map(data, item => (
             <ListGroup.Item
               style={{ cursor: "pointer" }}
