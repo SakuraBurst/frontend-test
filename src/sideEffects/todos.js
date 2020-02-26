@@ -9,14 +9,11 @@ import {
 
 export function* todosSideEffect(action) {
   try {
-    console.log("test");
     const userId = yield select(state => get(state, "auth.data.id", ""));
-    console.log("data id", userId);
     const data = yield call(
       request,
       `http://localhost:3004/todos?userId=${userId}`
     );
-    console.log("tododata", data);
     yield put(todoFetchSuccessAction(data));
   } catch (e) {
     yield put(todoFetchFailAction(e));

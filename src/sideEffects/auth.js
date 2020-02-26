@@ -6,7 +6,6 @@ import {
   authLoginSuccessAction,
   authLoginFailAction
 } from "../actions/auth";
-import { albumFetchAction } from "../actions/albums";
 
 export function* authSideEffect(action) {
   try {
@@ -16,15 +15,9 @@ export function* authSideEffect(action) {
       `http://localhost:3004/users?email=${email}`
     );
     if (data.length) {
-      console.log(data);
       localStorage.setItem("login", data[0].email);
       yield put(authLoginSuccessAction(data[0]));
-      if (action.direction === "albums") {
-        yield put(push("/albums"));
-        yield put(albumFetchAction());
-      } else {
-        yield put(push("/todo"));
-      } // nu, ya daje capsom ne budu pisat. ya veryu v tebya, zavtrashniy ya
+      yield put(push("/todo"));
     } else {
       /* eslint-disable no-throw-literal */
       throw "User not found.";

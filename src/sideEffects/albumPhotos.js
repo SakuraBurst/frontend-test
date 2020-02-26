@@ -10,7 +10,6 @@ export function* getAlbumPhotos(actions) {
       `http://localhost:3004/photos?albumId=${albumId}`
     );
     if (data.length) {
-      console.log("photos", data);
       yield put(setAlbumPhotos(data));
     } else {
       /* eslint-disable no-throw-literal */

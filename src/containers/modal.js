@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal, Button, ListGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 //import { getAlbumPhotos } from "../actions/albums";
 import { get, map } from "lodash";
 

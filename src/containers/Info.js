@@ -8,7 +8,7 @@ export default function Info() {
   const dispatch = useDispatch();
   const loading = useSelector(state => get(state, "auth.loading", false));
   const data = useSelector(state => get(state, "auth.data", {}));
-  const testFunction = () => {
+  const logoutFunction = () => {
     dispatch(logOutRequest());
   };
   return (
@@ -27,7 +27,7 @@ export default function Info() {
               <li>City: {get(data, "address.city")}</li>
               <li>Company: {get(data, "company.name")}</li>
             </ul>
-            <Card.Link href="#" onClick={testFunction}>
+            <Card.Link href="" onClick={logoutFunction}>
               Exit
             </Card.Link>
           </Card.Body>

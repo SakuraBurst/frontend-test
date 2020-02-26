@@ -17,16 +17,12 @@ export default function AlbumsPage() {
   const [modalShow, setModalShow] = React.useState(false);
   //const [albumId, setAlbumId] = React.useState(false);
   useEffect(() => {
-    if (localStorage.login) {
-      dispatch(authLoginAction(localStorage.login, "albums"), [dispatch]);
-    }
     dispatch(albumFetchAction());
   }, [dispatch]);
   const getAlbum = id => {
     dispatch(getAlbumPhotos(id));
   };
   const filterAlbums = () => {
-    console.log("work?");
     dispatch(filterAlbum());
   };
   return (

@@ -4,8 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 import Info from "../containers/Info";
 import logoSrc from "./logo.png";
 import "./Template.css";
+import { useSelector } from "react-redux";
+import { get } from "lodash";
 
 export default function Template({ children }) {
+  const data = useSelector(state => get(state, "auth.data.id"));
   return (
     <Container>
       <header className="header">
@@ -33,12 +36,23 @@ export default function Template({ children }) {
         </Navbar>
       </header>
       <main>
-        <Row>
-          <Col md={4}>
-            <Info />
-          </Col>
-          <Col md={8}>{children}</Col>
-        </Row>
+        {data ? (
+          <Row>
+            <Col md={4}>
+              <Info />
+            </Col>
+            <Col md={8}>{children}</Col>
+          </Row>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            {children}
+          </div>
+        )}
       </main>
     </Container>
   );
